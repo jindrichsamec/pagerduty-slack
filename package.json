@@ -9,8 +9,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@brandembassy/be-javascript-utils": "^1.4.2",
     "@types/node-fetch": "^2.1.7",
     "debug": "^4.1.1",
+    "dotenv": "^7.0.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-logger": "^3.2.0",
@@ -31,7 +33,6 @@
     "typescript": "^3.2.4",
     "webpack": "^4.29.0"
   },
-  "author":
-    "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
+  "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT"
 }
