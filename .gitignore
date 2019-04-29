@@ -66,3 +66,5 @@ typings/
 # Webpack directories
 .webpack
 
+yarn-error.log
+
