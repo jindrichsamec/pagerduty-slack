@@ -19,7 +19,7 @@ async function handleCallMe (ctx: Koa.Context) {
     response_type: 'ephemeral',
     text: `Your phone number +${ctx.phoneNumber[0]} ${ctx.phoneNumber[1]} is set in pagerduty`,
     attachments: [
-      'https://media.giphy.com/media/Kyz9sLuhW4Y1d2QC6q/giphy.gif'
+      {url: 'https://media.giphy.com/media/Kyz9sLuhW4Y1d2QC6q/giphy.gif'}
     ]
   }
 }
