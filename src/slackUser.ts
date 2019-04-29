@@ -4,7 +4,8 @@ import { getEnvVariable } from '@brandembassy/be-javascript-utils'
 const SLACK_OAUTH_ACCESS_TOKEN = getEnvVariable('SLACK_OAUTH_ACCESS_TOKEN')
 
 export interface UserProfile {
-  phone? : string
+  phone? : string,
+  display_name? : string
 }
 
 interface UserResponse {

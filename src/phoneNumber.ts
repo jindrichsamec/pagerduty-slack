@@ -1,10 +1,10 @@
 import { getEnvVariable } from '@brandembassy/be-javascript-utils';
 
-export type PhoneNumber = [number, string]
+export type PhoneNumber = [number, string, string]
 
 const DEFAULT_COUNTRY_CODE = getEnvVariable('DEFAULT_COUNTRY_CODE', '420');
 
-export const parsePhoneNumber = (phoneNumber: string): PhoneNumber => {
+export const parsePhoneNumber = (phoneNumber: string, description ?: string): PhoneNumber => {
   const rawNumber = phoneNumber.split(' ').join('').replace('+', '00').replace('00', '')
   let countryCode = Number(DEFAULT_COUNTRY_CODE)
   let number
@@ -16,5 +16,5 @@ export const parsePhoneNumber = (phoneNumber: string): PhoneNumber => {
   } else {
     throw new Error(`Given number ${phoneNumber} is not valid phone number`)
   }
-  return [ Number(countryCode), String(number) ]
+  return [ Number(countryCode), String(number), description || '']
 }

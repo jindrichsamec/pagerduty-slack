@@ -1,20 +1,18 @@
 import fetch, { Response } from 'node-fetch'
 import { getEnvVariable } from '@brandembassy/be-javascript-utils';
 
-const PAGERDUTY_CONTACT_ID = getEnvVariable('PAGERDUTY_CONTACT_ID')
-const PAGERDUTY_USER_ID = getEnvVariable('PAGERDUTY_USER_ID')
 const PAGERDUTY_API_TOKEN = getEnvVariable('PAGERDUTY_API_TOKEN')
 
 export interface PagerDutyContactMethod {
-  id: string
+  id ?: string
   type: string
-  summary: string
-  self: string
-  html_url: string | null
-  label: string
-  address: string
-  blacklisted: boolean
   country_code: number
+  address: string
+  label: string
+  summary ?: string
+  self ?: string
+  html_url ?: string | null
+  blacklisted ?: false
 }
 interface PagerDutyUser {
   contact_methods: Array<PagerDutyContactMethod>
@@ -64,7 +62,7 @@ export const createPagerDutyContact = async (userId: string, data: PagerDutyCont
 
 export const findPagerDutyContact = async (userId: string): Promise<PagerDutyUser> => {
   const url = `https://api.pagerduty.com/users/${userId}`
-  const response = await fetch(url, {
+  const rawResponse = await fetch(url, {
     method: 'GET',
     headers: {
       Accept: 'application/vnd.pagerduty+json;version=2',
@@ -72,5 +70,6 @@ export const findPagerDutyContact = async (userId: string): Promise<PagerDutyUse
       Authorization: `Token token=${PAGERDUTY_API_TOKEN}`,
     }
   })
-  return response.json()
+  const response = await rawResponse.json()
+  return response.user
 }
