@@ -5,10 +5,6 @@ service:
 plugins:
   - serverless-webpack
 
-custom:
-  webpack:
-    excludeFiles: ./*.test.ts
-
 provider:
   name: aws
   region: eu-central-1
